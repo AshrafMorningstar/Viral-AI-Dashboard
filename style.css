@@ -1,0 +1,377 @@
+/**
+ * Copyright (c) 2022-2026 Ashraf Morningstar
+ * 
+ * These are personal recreations of existing projects, developed by Ashraf Morningstar 
+ * for learning and skill development. Original project concepts remain the 
+ * intellectual property of their respective creators.
+ */
+
+:root {
+    --bg-color: #050510;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary-neon: #00f3ff;
+    --secondary-neon: #bc13fe;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: radial-gradient(circle at top right, #1a1a3a, #050510);
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.3;
+}
+
+/* Glassmorphism Utilities */
+.glass-nav, .glass-panel, .glass-footer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Navigation */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--primary-neon);
+}
+
+.logo .highlight {
+    color: var(--primary-neon);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.nav-item:hover {
+    color: var(--primary-neon);
+    text-shadow: 0 0 8px var(--primary-neon);
+}
+
+/* Buttons */
+.neo-transparent {
+    background: transparent;
+    border: 1px solid var(--primary-neon);
+    color: var(--primary-neon);
+    padding: 0.8rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-transparent:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 15px var(--primary-neon), inset 0 0 5px var(--primary-neon);
+    color: #fff;
+    transform: scale(1.05); /* Zoom in effect */
+}
+
+.primary-btn {
+    background: var(--primary-neon);
+    color: #000;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding: 3rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.glass-panel {
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+    border-color: rgba(0, 243, 255, 0.3);
+}
+
+/* Hero Section */
+.hero-card {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60vh;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glitch {
+    position: relative;
+    color: var(--secondary-neon);
+    -webkit-text-fill-color: var(--secondary-neon);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    border-left: 2px solid var(--secondary-neon);
+    padding-left: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* Zoom Effect Class */
+.zoom-effect {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.zoom-effect:hover {
+    transform: scale(1.05);
+}
+
+/* Analytics Graph */
+.graph-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    height: 200px;
+    padding-top: 1rem;
+}
+
+.bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--secondary-neon), transparent);
+    height: var(--h);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.7;
+    transition: height 1s ease, opacity 0.3s ease;
+}
+
+.bar:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--secondary-neon));
+}
+
+/* Features */
+.features-card {
+    grid-column: 1 / -1;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-item .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+    color: var(--primary-neon);
+}
+
+.glass-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .hero-card h1 {
+        font-size: 3rem;
+    }
+    .stats-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SUPER BOT GENERATED - PREMIUM UI V2 */
+:root {
+    --neon-blue: #00f3ff;
+    --neon-purple: #bc13fe;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --dark-bg: #0a0a0a;
+    --text-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Cards */
+.card, .container, section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects & Zoom */
+.card:hover, button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-purple);
+    border-color: var(--neon-blue);
+    z-index: 10;
+}
+
+/* Futuristic Buttons */
+button, .btn {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+    border-radius: 5px;
+}
+
+button:hover, .btn:hover {
+    background: var(--neon-blue);
+    color: #000;
+    box-shadow: 0 0 50px var(--neon-blue);
+}
+
+/* Utility Animations */
+@keyframes glow {
+    0% { text-shadow: 0 0 10px var(--neon-blue); }
+    100% { text-shadow: 0 0 20px var(--neon-purple), 0 0 30px var(--neon-blue); }
+}
+
+h1, h2 {
+    animation: glow 3s infinite alternate;
+}
