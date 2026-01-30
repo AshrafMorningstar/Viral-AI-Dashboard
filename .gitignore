@@ -1,0 +1,7 @@
+# Super Bot Auto-Generated Gitignore
+__pycache__/
+*.log
+env/
+.DS_Store
+node_modules/
+*.zip
